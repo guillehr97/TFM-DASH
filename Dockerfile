@@ -6,7 +6,7 @@ WORKDIR /code
 COPY requirements.txt .
 COPY iex_dow.csv .
 COPY modelo_2d_lineas1.h5 .
-COPY modelo_1d_3.h5 .
+COPY modelo1D_3.h5 .
 COPY predicciones.csv .
 
 # install dependencies
