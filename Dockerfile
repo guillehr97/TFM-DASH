@@ -14,6 +14,7 @@ COPY modelo_2d_lineas1.h5 .
 COPY modelo1D_3.h5 .
 COPY predicciones.csv .
 COPY DASH-BUENO.py .
-
+COPY graficos_hoy/ .
+COPY graficos_hoy_lineas/ .
 
 CMD [ "python", "./DASH-BUENO.py" ]
