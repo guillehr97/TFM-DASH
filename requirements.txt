@@ -26,6 +26,7 @@ pyEX
 requests
 scipy
 seaborn
+sklearn
 tb-nightly
 tensorflow
 yfinance
