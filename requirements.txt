@@ -1,4 +1,5 @@
 cloudpickle
+cv2
 dash
 dash-core-components
 dash-html-components
