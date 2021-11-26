@@ -11,6 +11,7 @@ Flask
 Flask-Compress
 gym
 h5py
+io
 matplotlib
 mpl-finance
 mplfinance
