@@ -20,13 +20,9 @@ numpydoc
 opencv-python
 pandas
 pip
-pillow
 plotly
 pyEX
-requests
 scipy
-seaborn
 sklearn
 tb-nightly
 tensorflow
-yfinance
