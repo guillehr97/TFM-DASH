@@ -52,7 +52,7 @@ def plot_candel(data):
 from scipy.signal import savgol_filter
 import io
 import cv2
-from PIL import Image
+#from PIL import Image
 
 def plot_candel1(data):
     fig, ax = plt.subplots(figsize=(4,3))
