@@ -1,3 +1,4 @@
+PACKAGE_NAME
 cloudpickle
 dash
 dash-core-components
@@ -28,4 +29,3 @@ seaborn
 tb-nightly
 tensorflow
 yfinance
-PIL
