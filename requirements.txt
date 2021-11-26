@@ -19,6 +19,7 @@ numpydoc
 opencv-python
 pandas
 pip
+pillow
 plotly
 pyEX
 requests
@@ -27,3 +28,4 @@ seaborn
 tb-nightly
 tensorflow
 yfinance
+PIL
