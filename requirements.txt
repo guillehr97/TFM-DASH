@@ -1,4 +1,3 @@
-PACKAGE_NAME
 cloudpickle
 dash
 dash-core-components
@@ -8,13 +7,10 @@ dash-table
 dask
 DateTime
 deprecation
-Flask
-Flask-Compress
 gym
 h5py
 matplotlib
 mpl-finance
-mplfinance
 numpy
 numpydoc
 opencv-python
