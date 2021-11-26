@@ -16,7 +16,7 @@ mpl-finance
 mplfinance
 numpy
 numpydoc
-opencv-python3
+opencv-python
 pandas
 pip
 plotly
