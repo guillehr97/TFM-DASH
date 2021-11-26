@@ -1,5 +1,4 @@
 cloudpickle
-cv2
 dash
 dash-core-components
 dash-html-components
@@ -18,6 +17,7 @@ mplfinance
 numpy
 numpydoc
 opencv-python
+opencv
 pandas
 pip
 plotly
