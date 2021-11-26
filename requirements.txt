@@ -18,7 +18,6 @@ mplfinance
 numpy
 numpydoc
 opencv-python
-cv2
 pandas
 pip
 pillow
