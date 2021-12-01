@@ -2,6 +2,10 @@ FROM python:3.8
 
 # set the working directory in the container
 WORKDIR /code
+
+ENV PORT 8080
+ENV HOST 0.0.0.0
+
 # copy the dependencies file to the working directory
 COPY requirements.txt .
 RUN apt-get update && apt-get install -y python3-opencv
