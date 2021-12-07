@@ -271,24 +271,27 @@ data_to_plot = datos[datos.ticker == 'AAPL']
 
 fig = go.Figure(
         go.Candlestick(
-            #x=data_to_plot['Date'],
             open=data_to_plot['open'],
             high=data_to_plot['high'],
             low=data_to_plot['low'],
             close=data_to_plot['close']
         )
     )
-fig.update_layout(xaxis_rangeslider_visible=False)
+fig.update_layout(xaxis_rangeslider_visible=False,
+    plot_bgcolor='rgb(255,255,255)',
+    paper_bgcolor ='rgb(112, 123, 124)',
+    font = dict(color = 'white'))
+fig.update_xaxes(showgrid=True, gridwidth=0.5, gridcolor='gray')
+fig.update_yaxes(showgrid=True, gridwidth=0.5, gridcolor='gray')
 
-conf = (0.5,0.6,0.7,0.8,0.9)
-ventanas = (15,20,30,40,50)
 
 
 app.layout = html.Div([
     html.Div(
             children=[
-                html.H1(children="ANÁLISIS DE PATRONES", className="header-title", style= {'color': 'blue', 'font-size': '300', 'text-align':'center'}),
-            ],
+                html.H1(children="ANÁLISIS DE PATRONES", className="header-title", style= {'color': 'white', 'font-size': '400', 'text-align':'center', 'backgroundColor':'rgb(112, 123, 124)', 'margin' : 0}),
+                html.P(children='En esta web se puede observar los gráficos encontrados en el Dow Jones en los ultimos 50 días. Para ver los distintos gráficos, pulsar el botón Número de Gráfico. Para volver a ver la tabla completa, pulsar el botón Resumen', style= {'color': 'white', 'font-size': '300', 'text-align':'center', 'backgroundColor':'rgb(112, 123, 124)', 'margin' : 0, 'margin-top':30, 'width': '70%','display': 'block', 'margin-left': 'auto', 'margin-right': 'auto'})
+            ], style ={'backgroundColor': 'rgb(112, 123, 124)'},
         className="header",
         ),
     html.Div([
@@ -298,15 +301,21 @@ app.layout = html.Div([
                 figure = fig,
                 config = {
                 'displayModeBar': False})
-    ], style={'width': '70%','display': 'block', 'margin-left': 'auto', 'margin-right': 'auto'}),
+    ], style={'width': '70%','display': 'block', 'margin-left': 'auto', 'margin-right': 'auto', 'color': 'white'}),
 
     
     html.Div([
-        dcc.Input(id="num_grafico", type="number", placeholder="Numero de grafico", style={'display':'block', 'margin-left': 'auto', 'margin-right': 'auto'}),
-        html.Button('Resumen', id='resumen_bot', n_clicks=0, style={'display':'block', 'margin-left': 'auto', 'margin-right': 'auto'})]),
+        dcc.Input(id="num_grafico", type="number", placeholder="Numero de grafico", style={'display':'block', 'margin-left': 'auto', 'margin-right': 'auto', 'margin-top':15}),
+        html.Button('Resumen', id='resumen_bot', n_clicks=0, style={'display':'block', 'margin-left': 'auto', 'margin-right': 'auto', 'backgroundColor' : 'white', 'margin-top':15})]),
 
-        html.Div([
-            dash_table.DataTable(
+    html.Div([
+        html.Div(
+            children=[
+                html.H1(children="PATRONES ENCONTRADOS", className="table-title", style= {'color': 'white', 'font-size': '400', 'text-align':'center', 'backgroundColor':'rgb(112, 123, 124)', 'margin' : 0, 'margin-bottom': 15, 'margin-top':15})
+            ],
+        className = 'header',
+    ),
+        dash_table.DataTable(
                 id = 'dataframe',
                 columns=[{"name": i, "id": i} for i in df1.columns],
                 data=df1.to_dict('records'),
@@ -320,25 +329,24 @@ app.layout = html.Div([
                 style_data_conditional=[
                     {
                         'if': {'row_index': 'odd'},
-                        'backgroundColor': 'rgb(140, 237, 255)',
+                        'backgroundColor': 'rgb(220, 220, 220)',
                     }
                 ],
                 style_header={
-                    'backgroundColor': 'rgb(0, 203, 255)',
+                    'backgroundColor': 'rgb(195, 195, 195)',
                     'color': 'black',
                     'fontWeight': 'bold'
                     }
                 ),
-    ],style={'width': '100%', 'display': 'inline-block'}),
+    ],style={'width': '100%', 'display': 'inline-block', 'backgroundColor':'rgb(112, 123, 124)'}),
 
-    ])
+    ], style={'backgroundColor': 'rgb(112, 123, 124)'}),
 ])
 
 
 @app.callback(
-   Output('velas', 'figure'), # src 
+   Output('velas', 'figure'),
    Input('num_grafico', 'value'))
-   #Input('confianza', 'value'))
 
 def update_figure(num_grafico):
 
@@ -350,14 +358,18 @@ def update_figure(num_grafico):
     data_to_plot = activo_sacado.iloc[(activo_sacado.shape[0]-dato_ventana):activo_sacado.shape[0],:]
     fig = go.Figure(
         go.Candlestick(
-            #x=data_to_plot['Date'],
             open=data_to_plot['open'],
             high=data_to_plot['high'],
             low=data_to_plot['low'],
             close=data_to_plot['close']
         )
     )
-    fig.update_layout(xaxis_rangeslider_visible=False)
+    fig.update_layout(xaxis_rangeslider_visible=False,
+    plot_bgcolor='rgb(255,255,255)',
+    paper_bgcolor ='rgb(112, 123, 124)',
+    font = dict(color = 'white'))
+    fig.update_xaxes(showgrid=True, gridwidth=0.5, gridcolor='gray')
+    fig.update_yaxes(showgrid=True, gridwidth=0.5, gridcolor='gray')
     return fig
 
 @app.callback(
@@ -373,8 +385,6 @@ def update_table(num_grafico, resumen_bot):
         return df1.to_dict('records')
     else:
         return datos_tabla
-
-print('FIN')
 
 if __name__ == '__main__':
     app.run_server(host="0.0.0.0", debug=False, port=8080)
